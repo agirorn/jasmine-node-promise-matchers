@@ -2,6 +2,8 @@
 
 > Custom jasmine matchers for javascript Promises.
 
+[![Build Status](https://travis-ci.org/agirorn/jasmine-node-promise-matchers.svg?branch=master)](https://travis-ci.org/agirorn/jasmine-node-promise-matchers)
+
 ## Install
 
 Get it from npm.
