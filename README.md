@@ -1,8 +1,9 @@
+[![npm version](https://badge.fury.io/js/jasmine-node-promise-matchers.svg)](https://badge.fury.io/js/jasmine-node-promise-matchers)
+[![Build Status](https://travis-ci.org/agirorn/jasmine-node-promise-matchers.svg?branch=master)](https://travis-ci.org/agirorn/jasmine-node-promise-matchers)
+
 # Jasmine Node Promise Matchers
 
 > Custom jasmine matchers for javascript Promises.
-
-[![Build Status](https://travis-ci.org/agirorn/jasmine-node-promise-matchers.svg?branch=master)](https://travis-ci.org/agirorn/jasmine-node-promise-matchers)
 
 ## Install
 
