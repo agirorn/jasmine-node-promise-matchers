@@ -36,6 +36,25 @@ describe('PromiseMatchers', function() {
       expect(promise).toResolveWith('Value', done);
     });
 
+    it('succseeds when promise resolves with nested object', function(done) {
+      var promise = new Promise(function(resolve) {
+        resolve({
+          key: {
+            key: 'value'
+          }
+        });
+      });
+
+      var value = {
+        key: {
+          key: 'value'
+        }
+      };
+
+      expect(promise).toResolveWith(value, done);
+    });
+
+
     it('fails when promise resolves with diferent value', function(done) {
       var promise = new Promise(function(resolve) {
         resolve('Wrong value');
@@ -90,6 +109,7 @@ describe('PromiseMatchers', function() {
   });
 
   describe('.toRejectWith', function() {
+
     it('succseeds when promise is rejected with same value', function(done) {
       var promise = new Promise(function(resolve, reject) {
         reject('Value');
@@ -97,6 +117,17 @@ describe('PromiseMatchers', function() {
 
       expect(promise).toRejectWith('Value', done);
     });
+
+    it('succseeds when promise is rejected with same value', function(done) {
+      var promise = new Promise(function(resolve, reject) {
+        reject({ key: { key: 'value' } });
+      });
+
+      var value = { key: { key: 'value' } };
+
+      expect(promise).toRejectWith(value, done);
+    });
+
 
     it('fails when promise rejects with different value', function(done) {
       var promise = new Promise(function(resolve, reject) {
