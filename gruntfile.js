@@ -52,6 +52,6 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('test', ['jasmine_nodejs']);
-  grunt.registerTask('default', ['watch']);
-
+  grunt.registerTask('dev', ['watch']);
+  grunt.registerTask('default', ['test', 'eslint']);
 };

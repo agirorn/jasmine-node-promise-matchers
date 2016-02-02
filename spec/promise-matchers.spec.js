@@ -25,6 +25,22 @@ describe('PromiseMatchers', function() {
 
       expect(promise).toResolve(done);
     });
+
+    it('throws an error if done is missing', function() {
+      var promise = new Promise(function() {});
+
+      expect(function() {
+        expect(promise).toResolve();
+      }).toThrowError(/Done is missing/);
+    });
+
+    it('throws an error if done is not a function', function() {
+      var promise = new Promise(function() {});
+
+      expect(function() {
+        expect(promise).toResolve('string');
+      }).toThrowError(/Done is not a function/);
+    });
   });
 
   describe('.toResolveWith', function() {
@@ -83,6 +99,22 @@ describe('PromiseMatchers', function() {
 
       expect(promise).toResolveWith('value', done);
     });
+
+    it('throws an error if done is missing', function() {
+      var promise = new Promise(function() {});
+
+      expect(function() {
+        expect(promise).toResolveWith();
+      }).toThrowError(/Done is missing/);
+    });
+
+    it('throws an error if done is not a function', function() {
+      var promise = new Promise(function() {});
+
+      expect(function() {
+        expect(promise).toResolveWith('string', 'string');
+      }).toThrowError(/Done is not a function/);
+    }); 
   });
 
   describe('.toReject', function() {
@@ -106,10 +138,25 @@ describe('PromiseMatchers', function() {
 
       expect(promise).toReject(done);
     });
+
+    it('throws an error if done is missing', function() {
+      var promise = new Promise(function() {});
+
+      expect(function() {
+        expect(promise).toReject();
+      }).toThrowError(/Done is missing/);
+    });
+
+    it('throws an error if done is not a function', function() {
+      var promise = new Promise(function() {});
+
+      expect(function() {
+        expect(promise).toReject('string');
+      }).toThrowError(/Done is not a function/);
+    });
   });
 
   describe('.toRejectWith', function() {
-
     it('succseeds when promise is rejected with same value', function(done) {
       var promise = new Promise(function(resolve, reject) {
         reject('Value');
@@ -157,6 +204,21 @@ describe('PromiseMatchers', function() {
 
       expect(promise).toRejectWith('value', done);
     });
-  });
 
+    it('throws an error if done is missing', function() {
+      var promise = new Promise(function() {});
+
+      expect(function() {
+        expect(promise).toRejectWith();
+      }).toThrowError(/Done is missing/);
+    });
+
+    it('throws an error if done is not a function', function() {
+      var promise = new Promise(function() {});
+
+      expect(function() {
+        expect(promise).toRejectWith('arg', 'string');
+      }).toThrowError(/Done is not a function/);
+    });
+  });
 });
