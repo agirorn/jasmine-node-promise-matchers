@@ -114,7 +114,23 @@ describe('PromiseMatchers', function() {
       expect(function() {
         expect(promise).toResolveWith('string', 'string');
       }).toThrowError(/Done is not a function/);
-    }); 
+    });
+
+    it('matches actial asymmetricMatch', function(done) {
+      var promise = new Promise(function(resolve) {
+        resolve(jasmine.any(Object));
+      });
+
+      expect(promise).toResolveWith({}, done);
+    });
+
+    it('matches expected asymmetricMatch', function(done) {
+      var promise = new Promise(function(resolve) {
+        resolve({});
+      });
+
+      expect(promise).toResolveWith(jasmine.any(Object), done);
+    });
   });
 
   describe('.toReject', function() {
@@ -175,7 +191,6 @@ describe('PromiseMatchers', function() {
       expect(promise).toRejectWith(value, done);
     });
 
-
     it('fails when promise rejects with different value', function(done) {
       var promise = new Promise(function(resolve, reject) {
         reject('Wrong value');
@@ -219,6 +234,22 @@ describe('PromiseMatchers', function() {
       expect(function() {
         expect(promise).toRejectWith('arg', 'string');
       }).toThrowError(/Done is not a function/);
+    });
+
+    it('matches actial asymmetricMatch', function(done) {
+      var promise = new Promise(function(resolve, reject) {
+        reject(jasmine.any(Object));
+      });
+
+      expect(promise).toRejectWith({}, done);
+    });
+
+    it('matches expected asymmetricMatch', function(done) {
+      var promise = new Promise(function(resolve, reject) {
+        reject({});
+      });
+
+      expect(promise).toRejectWith(jasmine.any(Object), done);
     });
   });
 });

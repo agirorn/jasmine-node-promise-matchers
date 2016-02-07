@@ -11,8 +11,8 @@ module.exports = function(grunt) {
         'spec/**/*.js'
       ],
       tasks: [
-        'clear', 'eslint',
-        'clear', 'test'
+        'clear', 'test',
+        'clear', 'eslint'
       ]
     },
 
