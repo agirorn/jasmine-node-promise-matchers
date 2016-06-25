@@ -2,7 +2,7 @@
   "name": "jasmine-node-promise-matchers",
   "version": "0.0.3",
   "description": "Jasmine Promise matchers for node.",
-  "main": "lib/index.js",
+  "main": "lib/promise-matchers.js",
   "scripts": {
     "test": "jasmine"
   },
