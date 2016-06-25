@@ -19,7 +19,7 @@ describe('PromiseMatchers', function() {
       });
 
       spyOn(done, 'fail').and.callFake(function(message) {
-        expect(message).toEqual('Promise was rejected');
+        expect(message).toEqual(new Error('Promise was rejected'));
         done();
       });
 
@@ -93,7 +93,7 @@ describe('PromiseMatchers', function() {
       });
 
       spyOn(done, 'fail').and.callFake(function(message) {
-        expect(message).toEqual('Promise was rejected');
+        expect(message).toEqual(new Error('Promise was rejected'));
         done();
       });
 
@@ -148,7 +148,7 @@ describe('PromiseMatchers', function() {
       });
 
       spyOn(done, 'fail').and.callFake(function(message) {
-        expect(message).toEqual('Promise was resolved');
+        expect(message).toEqual(new Error('Promise was resolved'));
         done();
       });
 
@@ -213,7 +213,7 @@ describe('PromiseMatchers', function() {
       });
 
       spyOn(done, 'fail').and.callFake(function(message) {
-        expect(message).toEqual('Promise was resolved');
+        expect(message).toEqual(new Error('Promise was resolved'));
         done();
       });
 
