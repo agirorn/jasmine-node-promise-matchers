@@ -45,7 +45,7 @@ it('rejects', function(done) {
     reject();
   });
 
-  expect(deferred).toResolve(done)
+  expect(deferred).toReject(done)
 });
 
 it('rejects with value', function(done) {
@@ -53,7 +53,7 @@ it('rejects with value', function(done) {
     reject('value');
   });
 
-  expect(deferred).toResolveWith('value', done)
+  expect(deferred).toRejectWith('value', done)
 });
 ```
 
