@@ -7,7 +7,7 @@ describe('PromiseMatchers', function() {
   });
 
   describe('.toResolve', function() {
-    it('succseeds on a resolving promise', function(done) {
+    it('succeeds on a resolving promise', function(done) {
       var promise = new Promise(function(resolve) {
         resolve();
       });
@@ -49,7 +49,7 @@ describe('PromiseMatchers', function() {
   });
 
   describe('.toResolveWith', function() {
-    it('succseeds when promise resolves with same value', function(done) {
+    it('succeeds when promise resolves with same value', function(done) {
       var promise = new Promise(function(resolve) {
         resolve('Value');
       });
@@ -57,7 +57,7 @@ describe('PromiseMatchers', function() {
       expect(promise).toResolveWith('Value', done);
     });
 
-    it('succseeds when promise resolves with nested object', function(done) {
+    it('succeeds when promise resolves with nested object', function(done) {
       var promise = new Promise(function(resolve) {
         resolve({
           key: {
@@ -142,7 +142,7 @@ describe('PromiseMatchers', function() {
   });
 
   describe('.toReject', function() {
-    it('succseeds on a rejected promise', function(done) {
+    it('succeeds on a rejected promise', function(done) {
       var promise = new Promise(function(resolve, rejected) {
         rejected();
       });
@@ -181,7 +181,7 @@ describe('PromiseMatchers', function() {
   });
 
   describe('.toRejectWith', function() {
-    it('succseeds when promise is rejected with same value', function(done) {
+    it('succeeds when promise is rejected with same value', function(done) {
       var promise = new Promise(function(resolve, reject) {
         reject('Value');
       });
@@ -189,7 +189,7 @@ describe('PromiseMatchers', function() {
       expect(promise).toRejectWith('Value', done);
     });
 
-    it('succseeds when promise is rejected with same value', function(done) {
+    it('succeeds when promise is rejected with same value', function(done) {
       var promise = new Promise(function(resolve, reject) {
         reject({ key: { key: 'value' } });
       });
