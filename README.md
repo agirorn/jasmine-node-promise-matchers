@@ -24,6 +24,14 @@ beforeEach(function() {
 ## Usage
 
 ```js
+it('is thenable', function() {
+  var deferred = Promise.resolve();
+  var thenable = { then: function () {} };
+
+  expect(deferred).toBeThenable();
+  expect(thenable).toBeThenable();
+});
+
 it('resolves', function(done) {
   var deferred = new Promise(function(resolve) {
     resolve();
