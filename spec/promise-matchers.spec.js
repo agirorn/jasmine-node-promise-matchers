@@ -1,3 +1,5 @@
+var NestedError = require('nested-error-stacks');
+
 describe('PromiseMatchers', function() {
 
   beforeEach(function() {
@@ -14,12 +16,15 @@ describe('PromiseMatchers', function() {
     });
 
     it('fails on a rejected promise', function(done) {
+      var nestedError = new Error('my nested error');
       var promise = new Promise(function(resolve, reject) {
-        reject();
+        reject(nestedError);
       });
 
-      spyOn(done, 'fail').and.callFake(function(message) {
-        expect(message).toEqual(new Error('Promise was rejected'));
+      spyOn(done, 'fail').and.callFake(function(error) {
+        expect(error instanceof NestedError).toBe(true);
+        expect(error.nested).toBe(nestedError);
+        expect(error.message).toBe('Promise was rejected');
         done();
       });
 
@@ -88,12 +93,15 @@ describe('PromiseMatchers', function() {
     });
 
     it('fails on a rejected promise', function(done) {
+      var nestedError = new Error('my nested error');
       var promise = new Promise(function(resolve, reject) {
-        reject();
+        reject(nestedError);
       });
 
-      spyOn(done, 'fail').and.callFake(function(message) {
-        expect(message).toEqual(new Error('Promise was rejected'));
+      spyOn(done, 'fail').and.callFake(function(error) {
+        expect(error instanceof NestedError).toBe(true);
+        expect(error.nested).toBe(nestedError);
+        expect(error.message).toBe('Promise was rejected');
         done();
       });
 
