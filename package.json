@@ -32,7 +32,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-eslint": "^17.3.1",
     "grunt-jasmine-nodejs": "^1.4.3",
-    "jasmine": "^2.4.1",
+    "jasmine": "2.4.1",
     "load-grunt-tasks": "^3.4.0",
     "promise-polyfill": "^3.1.0"
   },
