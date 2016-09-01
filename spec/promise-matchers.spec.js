@@ -6,6 +6,29 @@ describe('PromiseMatchers', function() {
     jasmine.addMatchers(require('../'));
   });
 
+  describe('.toBeThenable', function() {
+    it('succeeds if it has .then', function() {
+      var thenable = {
+        then: function () {}
+      };
+
+      expect(thenable).toBeThenable();
+    });
+
+    it('succeeds if it is a Promise', function() {
+      var promise = Promise.resolve();
+      expect(promise).toBeThenable();
+    });
+
+    it('fails if it does not have .then', function() {
+      var object = {
+        catch: function () {}
+      };
+
+      expect(object).not.toBeThenable();
+    });
+  });
+
   describe('.toResolve', function() {
     it('succeeds on a resolving promise', function(done) {
       var promise = new Promise(function(resolve) {
