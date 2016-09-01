@@ -1,6 +1,6 @@
 {
   "name": "jasmine-node-promise-matchers",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Jasmine Promise matchers for node.",
   "main": "lib/promise-matchers.js",
   "scripts": {
