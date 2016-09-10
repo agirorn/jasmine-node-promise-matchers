@@ -162,6 +162,22 @@ describe('PromiseMatchers', function() {
 
       expect(promise).toResolveWith(jasmine.any(Object), done);
     });
+
+    it('matches expected null', function(done) {
+      var promise = new Promise(function(resolve) {
+        resolve(null);
+      });
+
+      expect(promise).toResolveWith(null, done);
+    });
+
+    it('matches expected undefined', function(done) {
+      var promise = new Promise(function(resolve) {
+        resolve(undefined);
+      });
+
+      expect(promise).toResolveWith(undefined, done);
+    });
   });
 
   describe('.toReject', function() {
@@ -281,6 +297,22 @@ describe('PromiseMatchers', function() {
       });
 
       expect(promise).toRejectWith(jasmine.any(Object), done);
+    });
+
+    it('matches expected null', function(done) {
+      var promise = new Promise(function(resolve, reject) {
+        reject(null);
+      });
+
+      expect(promise).toRejectWith(null, done);
+    });
+
+    it('matches expected undefined', function(done) {
+      var promise = new Promise(function(resolve, reject) {
+        reject(undefined);
+      });
+
+      expect(promise).toRejectWith(undefined, done);
     });
   });
 });
