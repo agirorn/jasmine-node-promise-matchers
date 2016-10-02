@@ -1,0 +1,2 @@
+describe('toString(object)', function() {
+});

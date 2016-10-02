@@ -2,5 +2,8 @@
   "extends": "../.eslintrc",
   "env": {
     "jasmine": true
+  },
+  "globals": {
+    "Promise": true
   }
 }
