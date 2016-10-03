@@ -8,4 +8,13 @@ describe('toString(object)', function() {
   it('returns 10 as string', function() {
     expect(toString(10)).toEqual('10');
   });
+
+  it('returns undefined as string', function() {
+    expect(toString(undefined)).toEqual('undefined');
+  });
+
+  it('returns null as string', function() {
+    expect(toString(null)).toEqual('null');
+  });
+
 });
