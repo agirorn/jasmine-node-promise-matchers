@@ -1,24 +1,74 @@
 var subject = require('../lib/is-equal');
 
 describe('isEqual', function() {
-  describe('two equal errors', function() {
+  describe('Objects', function() {
     it('should be equal', function() {
-      expect(subject(new Error('a'), new Error('a'))).toBeTruthy();
+      expect(subject({ key: 'value' }, { key: 'value' })).toBeTruthy();
+    });
+
+    it('should not be equal', function() {
+      expect(subject({ key: 'value' }, { key: 'no-value' })).toBeFalsy();
     });
   });
 
-  describe('two errors with different massages', function() {
-    it('should be equal', function() {
-      expect(subject(new Error('a'), new Error('b'))).toBeFalsy();
-    });
-  });
+  describe('errors', function() {
+    describe('two errors', function() {
+      describe('when .message is the same', function() {
+        it('should be equal', function() {
+          expect(subject(new Error(''), new Error(''))).toBeTruthy();
+        });
+      });
 
-  describe('two errors with the same message but stil diffrent', function() {
-    it('should be equal', function() {
-      var a = new Error('a');
-      var b = new Error('a');
-      b.code = 10;
-      expect(subject(a, b)).toBeFalsy();
+      describe('when .message is not the same', function() {
+        it('should not be equal', function() {
+          expect(subject(new Error(''), new Error('x'))).toBeFalsy();
+        });
+      });
+
+      describe('when .message is the same expected is diffrent', function() {
+        it('should not be equal', function() {
+          var actual = new Error('');
+          var expected = new Error('');
+          expected.code = 1;
+          expect(subject(actual, expected)).toBeFalsy();
+        });
+      });
+    });
+
+    describe('expected is an asymmetric matcher', function() {
+      describe('match', function() {
+        it('should be equal', function() {
+          var expected = { asymmetricMatch: function() { return true; } };
+          var actual = new Error('');
+          expect(subject(actual, expected)).toBeTruthy();
+        });
+      });
+
+      describe('diffrent', function() {
+        it('should not be equal', function() {
+          var expected = { asymmetricMatch: function() { return false; } };
+          var actual = new Error('');
+          expect(subject(actual, expected)).toBeFalsy();
+        });
+      });
+    });
+
+    describe('actual is an asymmetric matcher', function() {
+      describe('match', function() {
+        it('should be equal', function() {
+          var actual = { asymmetricMatch: function() { return true; } };
+          var expected = new Error('');
+          expect(subject(actual, expected)).toBeTruthy();
+        });
+      });
+
+      describe('diffrent', function() {
+        it('should not be equal', function() {
+          var actual = { asymmetricMatch: function() { return false; } };
+          var expected = new Error('');
+          expect(subject(actual, expected)).toBeFalsy();
+        });
+      });
     });
   });
 });
