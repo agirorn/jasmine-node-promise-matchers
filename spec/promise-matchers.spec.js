@@ -39,15 +39,14 @@ describe('PromiseMatchers', function() {
     });
 
     it('fails on a rejected promise', function(done) {
-      var nestedError = new Error('my nested error');
+      var error = new Error('error reason');
       var promise = new Promise(function(resolve, reject) {
-        reject(nestedError);
+        reject(error);
       });
 
       spyOn(done, 'fail').and.callFake(function(error) {
-        expect(error instanceof NestedError).toBe(true);
-        expect(error.nested).toBe(nestedError);
-        expect(error.message).toBe('Promise was rejected');
+        expect(error instanceof Error).toBe(true);
+        expect(error.message).toBe('error reason');
         done();
       });
 
