@@ -38,6 +38,14 @@ describe('PromiseMatchers', function() {
       expect(promise).toResolve(done);
     });
 
+    it('succeeds on a resolving promise with an Error', function(done) {
+      var promise = new Promise(function(resolve) {
+        resolve(new Error());
+      });
+
+      expect(promise).toResolve(done);
+    });
+
     it('fails on a rejected promise', function(done) {
       var nestedError = new Error('my nested error');
       var promise = new Promise(function(resolve, reject) {
@@ -78,6 +86,14 @@ describe('PromiseMatchers', function() {
       });
 
       expect(promise).toResolveWith('Value', done);
+    });
+
+    it('succeeds when promise resolves with an Error value', function(done) {
+      var promise = new Promise(function(resolve) {
+        resolve(new Error());
+      });
+
+      expect(promise).toResolveWith(new Error(), done);
     });
 
     it('succeeds when promise resolves with nested object', function(done) {
@@ -189,6 +205,14 @@ describe('PromiseMatchers', function() {
       expect(promise).toReject(done);
     });
 
+    it('succeeds on a rejected promise with an Error', function(done) {
+      var promise = new Promise(function(resolve, rejected) {
+        rejected(new Error());
+      });
+
+      expect(promise).toReject(done);
+    });
+
     it('fails on a resolved promise', function(done) {
       var promise = new Promise(function(resolve) {
         resolve();
@@ -226,6 +250,14 @@ describe('PromiseMatchers', function() {
       });
 
       expect(promise).toRejectWith('Value', done);
+    });
+
+    it('succeeds when promise is rejected with an Error', function(done) {
+      var promise = new Promise(function(resolve, reject) {
+        reject(new Error());
+      });
+
+      expect(promise).toRejectWith(new Error(), done);
     });
 
     it('succeeds when promise is rejected with same value', function(done) {
