@@ -4,8 +4,9 @@
   "description": "Jasmine Promise matchers for node.",
   "main": "lib/promise-matchers.js",
   "scripts": {
-    "dev": "nodemon --exec 'clear && npm run test --silent && npm run eslint --silent'",
-    "eslint": "eslint lib spec",
+    "ci": "yarn test && yarn lint",
+    "dev": "nodemon --exec 'clear && npm run test --silent && npm run lint --silent'",
+    "lint": "eslint lib spec",
     "test": "jasmine"
   },
   "repository": {
@@ -28,14 +29,14 @@
   },
   "homepage": "https://github.com/agirorn/jasmine-node-promise-matchers#readme",
   "devDependencies": {
-    "eslint": "^3.7.0",
-    "eslint-config-defaults": "^8.0.2",
+    "eslint": "^6.2.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
     "jasmine": "^3.0.0",
-    "nodemon": "^1.10.2",
-    "promise-polyfill": "^3.1.0"
+    "nodemon": "^1.10.2"
   },
   "dependencies": {
     "deep-equal": "^1.0.1",
-    "nested-error-stacks": "^1.0.2"
+    "nested-error-stacks": "^2.1.0"
   }
 }
